@@ -16,7 +16,7 @@ The main goal is to help PS4 gamers like myself who have no time or too lazy to 
 ![updated calendar](./images/updated_calendar.png)
 <br>
 <br>
-## 2. Instructions
+## 2. Uasge Instructions
 
 ### Goolge Calendar API
 To access your Google calendar using Python you need to set up Google Calendar API. 
