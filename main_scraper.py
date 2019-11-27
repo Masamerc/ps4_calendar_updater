@@ -3,6 +3,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from bs4 import BeautifulSoup
 import requests
 
+# please make sure "clients_secrets.json" file is saved in the same directory
+CLIENT_SECRETS_FILE = "client_secrets.json"
 
 def scrape(data):
     """
@@ -30,7 +32,8 @@ def save_credentials():
     Return credentials required to access Google Calendar API
     """
     scopes = ['https://www.googleapis.com/auth/calendar']
-    flow = InstalledAppFlow.from_client_secrets_file("client_secrets.json", scopes=scopes)
+    flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE,
+                                                    scopes=scopes)
     my_credentials = flow.run_console()
     return my_credentials
         
