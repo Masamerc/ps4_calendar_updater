@@ -1,6 +1,7 @@
 from apiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from bs4 import BeautifulSoup
+from tqdm import tqdm
 import requests
 
 # please make sure "clients_secrets.json" file is saved in the same directory
@@ -48,12 +49,10 @@ def update_calendar(data, my_credentials, calendar_id):
     # id of the calendar you want to update
     calendar_id = calendar_id
     # update calendar
-    for datum in data:
+    for datum in tqdm(data, desc="Updating Calendar", unit=" events"):
         created_event = service.events().quickAdd(
             calendarId=calendar_id,
             text=f'{datum["title"]} on {datum["release_date"]}').execute()
-        print(f'Added {datum["title"]} to the calender on {datum["release_date"]}')
-
 
 if __name__ == "__main__":
     game_data = []
