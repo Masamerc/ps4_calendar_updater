@@ -46,11 +46,10 @@ def update_calendar(data, calender_id):
     # id of the calendar you want to update
     calendar_id = calender_id
     # update calendar
-    for datum in data:
+    for datum in tqdm(data, desc="Updating Calendar", unit=" events"):
         created_event = service.events().quickAdd(
             calendarId=calendar_id,
             text=f'{datum["title"]} on {datum["release_date"]}').execute()
-        print(f'Added {datum["title"]} to the calender on {datum["release_date"]}')
 
 
 if __name__ == "__main__":

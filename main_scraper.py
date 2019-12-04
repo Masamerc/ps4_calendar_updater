@@ -61,6 +61,6 @@ if __name__ == "__main__":
     print("Data scraped from metacritic.com", "\n")
     my_credentials = save_credentials()
     print("\n")
-    update_calendar(game_data, my_credentials, calendar_id="bger34bk1ihilh0q19pp5tn8uc@group.calendar.google.com")
+    update_calendar(game_data, my_credentials, calendar_id="YOUR_CALENDAR_ID")
     print("\n", "Calendar successfully updated")
     print("\n", "Happy Gaming!", "\n")
