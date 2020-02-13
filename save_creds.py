@@ -2,11 +2,8 @@ from apiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 import pickle
 
-# please make sure "clients_secrets.json" file is saved in the same directory
-CLIENT_SECRETS_FILE = "client_secrets.json"
-
 # uncomment the line below to use the file in the main directory (MAC/LINUX)
-# CLIENT_SECRETS_FILE = "../client_secrets.json"
+CLIENT_SECRETS_FILE = "./client_secrets.json"
 
 scopes = ['https://www.googleapis.com/auth/calendar']
 
