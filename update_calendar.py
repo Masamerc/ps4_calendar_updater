@@ -3,7 +3,10 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from bs4 import BeautifulSoup
 import requests
 import pickle
+from tqdm import tqdm
+from colorama import init, Fore
 
+init()
 
 def scrape(data):
     """
@@ -43,21 +46,20 @@ def update_calendar(data, calender_id):
     """
     credentials = pickle.load(file=open("token.pkl", "rb"))
     service = build("calendar", "v3", credentials=credentials)
-    # id of the calendar you want to update
-    calendar_id = calender_id
     # update calendar
     for datum in tqdm(data, desc="Updating Calendar", unit=" events"):
+        user_calender_id = calender_id
         created_event = service.events().quickAdd(
-            calendarId=calendar_id,
+            calendarId=user_calender_id,
             text=f'{datum["title"]} on {datum["release_date"]}').execute()
 
 
 if __name__ == "__main__":
+    YOUR_CALENDAR_ID = input("What's your calendar ID?: ")
     game_data = []
     print("Starting...", "\n")
     scrape(game_data)
     print("Data scraped from metacritic.com", "\n")
-    update_calendar(game_data, calender_id="YOUR_CALENDAR_ID")
-    print("\n", "Calendar successfully updated")
-    print("\n", "Happy Gaming!", "\n")
-
+    update_calendar(game_data, YOUR_CALENDAR_ID)
+    print(Fore.GREEN + "Calendar successfully updated")
+    print("Happy Gaming!")
