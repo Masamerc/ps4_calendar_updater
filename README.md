@@ -2,8 +2,9 @@
 
 ## 1. Overview 
 A web-scraping project which updatates your Goolge Calendar with release dates of upcoming PS4 games.
-
 The main goal is to help PS4 gamers like myself who have no time or too lazy to go to websites just to check upcoming PS4 releases.
+
+You can use docker to run the program as well. [Run with Docker](#Run-with-Docker🐋)
 <br>
 
 The project itself is a collection of python scripts which:
@@ -81,3 +82,30 @@ $ python update_calendar.py
 What's your calendar ID?: 
 ``` 
 
+<br>
+
+# Run with Docker🐋
+
+1. Build a docker container with the supplied Dockerfile. You can name the container whatever you want. 
+
+```docker
+# Dockerfile
+
+FROM python:latest
+
+COPY . /user/src/app
+WORKDIR /user/src/app
+
+RUN pip install -r requirements.txt
+
+CMD python docker_update.py
+```
+
+```
+$ docker build . -t CONTAINER_NAME
+```
+
+2. Run the container like so: (make sure you use the "-it" tag since it requires interactivity for authentication)
+```
+$ docker run -it CONTAINER_NAME
+```
