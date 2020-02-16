@@ -83,6 +83,7 @@ What's your calendar ID?:
 ``` 
 
 <br>
+---
 
 ### Run with Docker🐋
 
